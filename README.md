@@ -93,6 +93,7 @@ npx prisma db seed
 
 # 6. Run the dev server
 npm run dev
+```
 
 ---
 
@@ -127,6 +128,7 @@ The Docker setup uses:
 - A **healthcheck** that verifies the database is reachable
 
 - Default port mapping 3001:3000 (dev server can stay on 3000)
+
 ---
 
 ## 🗄️ Database Schema
@@ -173,7 +175,7 @@ word Word @relation(fields: [wordId], references: [id], onDelete: Cascade)
 @@unique([wordId, position])
 }
 
-````
+```
 
 ## 📡 API Endpoints
 
@@ -203,8 +205,7 @@ All endpoints return consistent JSON: `{ success: boolean, data?: T, error?: str
 
 Every POST/PUT request is validated with Zod (`lib/validators.ts`). Invalid input returns `400` with per-field details. Missing resources return `404`. Unique-constraint returns `409`. Unhandled errors return `500` with a generic message (details logged server-side only).
 
-The `/api/health` endpoint returns `200` when the database is reachable and `503` when it is not — a proper dependency check rather than a static response.
----
+## The `/api/health` endpoint returns `200` when the database is reachable and `503` when it is not — a proper dependency check rather than a static response.
 
 ## 📊 Dashboard (`/dashboard`)
 
@@ -223,9 +224,10 @@ Auto-refreshes every 30 seconds. All numbers are sourced from the database.
 
 ---
 
-
 ---
+
 ## 📁 Saved Activities (/activities)
+
 Every time a Wordle or Word Search is generated, its configuration is saved to the database as an Activity. The /activities page lists every saved configuration with:
 
 - **Type badge** (WORDLE / WORDSEARCH)
@@ -234,9 +236,7 @@ Every time a Wordle or Word Search is generated, its configuration is saved to t
 - **Open in builder** button linking to the correct builder
 - **Delete** button for removing outdated configurations
 
-This closes the loop on the A2 feedback and makes the Activity model fully integrated into the frontend.
----
-
+## This closes the loop on the A2 feedback and makes the Activity model fully integrated into the frontend.
 
 ## 🎮 Features
 
@@ -300,7 +300,7 @@ npm run dev
 
 # In another terminal:
 npx playwright test
-````
+```
 
 View HTML report:
 
